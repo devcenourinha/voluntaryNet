@@ -9,19 +9,26 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Dialog from "../components/dialog/dialog"; // Ajuste o caminho se necessário
+import { useNavigation } from "expo-router";
 
 const HomeScreen = () => {
   const [modalVisible, setModalVisible] = useState(false); // Estado para abrir/fechar o modal
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      {/* Navbar Superior */}
       <View style={styles.navbar}>
         <Text style={styles.navTextBold}>Olá Jotinha!</Text>
-        <TouchableOpacity>
-          <Ionicons name="notifications-outline" size={24} color="white" />
-        </TouchableOpacity>
+        <View style={{ flexDirection: "row", gap: 16 }}>
+          <TouchableOpacity onPress={() => console.log("Notificações")}>
+            <Ionicons name="notifications-outline" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="log-out-outline" size={24} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
+
 
       {/* Barra de Pesquisa */}
       <View style={styles.searchContainer}>
